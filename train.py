@@ -15,14 +15,14 @@ torch.manual_seed(0)
 torch.backends.cudnn.deterministic = True
 torch.backends.cudnn.benchmark = False
 
-#args = parse_args()
-#CUDA_DEVICES = args.cuda_devices
-#DATASET_ROOT = args.path
+
 CUDA_DEVICES = 0
 DATASET_ROOT = './crop_cars_train'
 
+# Set up initial learning rate
 init_lr = 0.01
 
+# Learning rate drop setting
 def adjust_lr(optimizer, epoch):
 	lr = init_lr * (0.1 ** (epoch // 30))
 	for param_group in optimizer.param_groups:
